@@ -105,7 +105,7 @@ class Haproxy
      */
     private function createServer(string $nom_serveur, string $socket_serveur, int $maxconn_serveur)
     {
-        return "server $nom_serveur $socket_serveur maxconn $maxconn_serveur";
+        return "server $nom_serveur $socket_serveur maxconn $maxconn_serveur check";
     }
 
     /**
