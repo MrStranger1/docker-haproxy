@@ -1,0 +1,37 @@
+backend haproxy-web_http
+        mode http
+        option httpchk
+        http-request add-header X-Forwarded-Proto https if { ssl_fc }
+        server haproxy-web  192.168.34.10:8080 maxconn 10 check
+        option forwardfor except 127.0.0.1
+
+
+
+backend 1calimero_http
+        mode http
+        option httpchk
+        option forwardfor except 127.0.0.1
+        http-request add-header X-Forwarded-Proto https if { ssl_fc } 
+	server calimero 14.78.254.45:78454 maxconn 6
+	
+backend 2calimero_http
+        mode http
+        option httpchk
+        option forwardfor except 127.0.0.1
+        http-request add-header X-Forwarded-Proto https if { ssl_fc } 
+	server calimerod 14.78.254.45:78454 maxconn 10
+	
+backend 3calimero_http
+        mode http
+        option httpchk
+        option forwardfor except 127.0.0.1
+        http-request add-header X-Forwarded-Proto https if { ssl_fc } 
+	server calimerot 14.78.254.45:78454 maxconn 15
+	
+backend altis_http
+        mode http
+        option httpchk
+        option forwardfor except 127.0.0.1
+        http-request add-header X-Forwarded-Proto https if { ssl_fc } 
+	server altis 145.24.23.58:7895 maxconn 3
+	

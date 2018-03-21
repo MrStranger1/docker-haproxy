@@ -1,0 +1,14 @@
+ acl haproxy_acl         hdr(host)               haproxy-web.net
+ use_backend             haproxy-web_http        if haproxy_acl
+	acl 1calimero_acl hdr(host) 1calimero.com
+	use_backend 1calimero_http if 1calimero_acl
+
+	acl 2calimero_acl hdr(host) 2calimero.com
+	use_backend 2calimero_http if 2calimero_acl
+
+	acl 3calimero_acl hdr(host) 3calimero.com
+	use_backend 3calimero_http if 3calimero_acl
+
+	acl altis_acl hdr(host) altis.com
+	use_backend altis_http if altis_acl
+
